@@ -51,7 +51,7 @@ pipeline{
 		    ], 
 	            credentialsId: 'nexus3', 
 	            groupId: 'in.javahome', 
-	            nexusUrl: '172.31.92.148:8081', 
+	            nexusUrl: '172.31.9.220:8081', 
 	            nexusVersion: 'nexus3', 
 	            protocol: 'http', 
 		    repository: nexusRepoName, 
@@ -68,11 +68,11 @@ pipeline{
 		    
 		    mv target/*.war target/javawebapplication.war
 		    
-                    scp -o StrictHostKeyChecking=no target/javawebapplication.war  ec2-user@172.31.94.250:/opt/tomcat8/webapps/
+                    scp -o StrictHostKeyChecking=no target/javawebapplication.war  ec2-user@172.31.29.62:/opt/tomcat8/webapps/
                     
-                    ssh ec2-user@172.31.94.250 /opt/tomcat8/bin/shutdown.sh
+                    ssh ec2-user@172.31.29.62 /opt/tomcat8/bin/shutdown.sh
                     
-                    ssh ec2-user@172.31.94.250 /opt/tomcat8/bin/startup.sh
+                    ssh ec2-user@172.31.29.62 /opt/tomcat8/bin/startup.sh
                 
                 """
                 }
